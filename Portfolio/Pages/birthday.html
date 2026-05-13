@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chúc mừng sinh nhật công chúa ❤️</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;500;700&family=Pacifico&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.5.1/dist/confetti.browser.min.js"></script>
+    <style>
+        :root { --primary-pink: #ff4d6d; --soft-pink: #fff0f3; --dark-blue: #003056; }
+        body {
+            margin: 0; padding: 0; font-family: 'Montserrat', sans-serif;
+            background-color: var(--soft-pink);
+            display: flex; justify-content: center; align-items: center; min-height: 100vh;
+        }
+        .container {
+            width: 90%; max-width: 500px; text-align: center;
+            background: white; padding: 40px; border-radius: 30px;
+            box-shadow: 0 20px 60px rgba(255, 77, 109, 0.2);
+        }
+        h1 { font-family: 'Pacifico'; color: var(--primary-pink); font-size: 2.2rem; }
+        .polaroid {
+            background: white; padding: 10px 10px 30px 10px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+            transform: rotate(2deg); margin: 20px 0;
+        }
+        .polaroid img { width: 100%; border-radius: 5px; }
+        .wish-text { color: var(--dark-blue); line-height: 1.8; font-weight: 500; }
+        .btn-wish {
+            background: var(--primary-pink); color: white; border: none;
+            padding: 12px 30px; border-radius: 50px; font-weight: bold;
+            cursor: pointer; margin-top: 20px; transition: 0.3s;
+        }
+        /* Modal điều ước */
+        #wish-modal {
+            position: fixed; inset: 0; background: rgba(0,0,0,0.6);
+            display: none; justify-content: center; align-items: center;
+            z-index: 100; backdrop-filter: blur(5px);
+        }
+        .modal-content {
+            background: white; padding: 30px; border-radius: 20px;
+            max-width: 350px; text-align: center; animation: pop 0.4s ease-out;
+        }
+        @keyframes pop { from { transform: scale(0.7); } to { transform: scale(1); } }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Hép bi bớt đay 🎂</h1>
+        <div class="polaroid">
+            <!-- Thay link ảnh công chúa của bạn ở đây -->
+            <img src="../Assets/IMG_6200.JPG" alt="Princess">
+            <p style="font-family: 'Pacifico'; color: #888; margin-top: 10px;">Công túa số 1 trong lòng anh ✨</p>
+        </div>
+        <div class="wish-text">
+            <p>Chúc mừng sinh nhật 5/6 cục dàng cụa anh ❤️</p>
+            <p>Dù quà có đến sớm hay đến muộn một chút, nhưng tình cảm anh dành cho em chưa bao giờ vơi đi, anh thương em nhiều lắm mặc dù anh chỉ mới cùng em đi một đoạn đường. Mong em luôn cười thật tươi và cùng anh đi hết cuộc đời này lun nka</p>
+        </div>
+        <button class="btn-wish" onclick="showModal()">Một điều ước cụa anh  ✨</button>
+    </div>
+
+    <div id="wish-modal" onclick="this.style.display='none'">
+        <div class="modal-content" onclick="event.stopPropagation()">
+            <h2 style="color: var(--primary-pink); font-family: 'Pacifico';">Điều ước của anh</h2>
+            <p style="color: var(--dark-blue); font-weight: 500;">
+                "Anh ước rằng từ nay về sau, sinh nhật nào của em cũng sẽ có anh bên cạnh để em để cùng vui vẻ, mong rằng em sẽ luôn hạnh phúc và yêu anh như cái cách mà anh yêu em. Mong em sẽ luôn mãi mãi giữ nụ cười trên môi ăng ún đầy đủ hông có được lì phại nghe lời anh, anh chúc cho cô gái cụa anh luôn luôn xinh đẹp dễ thương và hạnh phúc, anh yêu em nhiều lắm Trâm ạaa"
+            </p>
+            <button class="btn-wish" onclick="document.getElementById('wish-modal').style.display='none'">Đóng ❤️</button>
+        </div>
+    </div>
+
+    <script>
+        window.onload = function() {
+            confetti({ particleCount: 150, spread: 70, origin: { y: 0.6 }, colors: ['#ff4d6d', '#daa939'] });
+        };
+        function showModal() { document.getElementById('wish-modal').style.display = 'flex'; }
+    </script>
+</body>
+</html>

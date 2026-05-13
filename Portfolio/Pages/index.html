@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hành Trình Kỷ Niệm ❤️</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;500;700&family=Pacifico&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/scrollreveal"></script>
+    <style>
+        :root {
+            --primary-pink: #ff4d6d;
+            --soft-pink: #fff0f3;
+            --dark-blue: #003056;
+            --gold: #daa939;
+        }
+
+        body {
+            margin: 0; padding: 0; font-family: 'Montserrat', sans-serif;
+            background-color: var(--soft-pink); overflow-x: hidden;
+        }
+
+        .sidebar-decor {
+            position: fixed; top: 0; width: 10%; height: 100%;
+            pointer-events: none; z-index: 1; display: flex;
+            flex-direction: column; justify-content: space-around;
+            align-items: center; font-size: 2rem; opacity: 0.4;
+        }
+        .sidebar-left { left: 0; }
+        .sidebar-right { right: 0; }
+
+        .float-icon { animation: sideFloat 4s ease-in-out infinite; }
+        @keyframes sideFloat {
+            0%, 100% { transform: translateY(0) rotate(0deg); }
+            50% { transform: translateY(-20px) rotate(15deg); }
+        }
+
+        .progress-bar {
+            position: fixed; top: 0; left: 0; height: 5px;
+            background: linear-gradient(to right, var(--gold), var(--primary-pink));
+            width: 0%; z-index: 1000;
+        }
+
+        #quiz-screen {
+            position: fixed; inset: 0; background: var(--soft-pink);
+            display: flex; flex-direction: column; justify-content: center;
+            align-items: center; z-index: 2000; transition: 1s ease-in-out;
+        }
+
+        .quiz-box {
+            background: white; padding: 40px; border-radius: 30px;
+            text-align: center; box-shadow: 0 20px 50px rgba(255, 77, 109, 0.2);
+            border: 2px solid var(--primary-pink); width: 85%; max-width: 400px;
+        }
+
+        .event-row {
+            display: flex; align-items: center; justify-content: center;
+            padding: 80px 15%; gap: 60px; flex-wrap: wrap; 
+            position: relative; z-index: 2;
+        }
+        .event-row:nth-child(even) { flex-direction: row-reverse; }
+
+        .polaroid {
+            background: white; padding: 15px 15px 50px 15px;
+            box-shadow: 0 15px 30px rgba(0,0,0,0.15);
+            transition: 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            max-width: 300px; width: 100%;
+        }
+        .polaroid img { width: 100%; height: 250px; object-fit: cover; }
+
+        .event-info { max-width: 350px; }
+        .time-tag {
+            background: var(--primary-pink); color: white;
+            padding: 5px 20px; border-radius: 20px; font-weight: bold;
+            display: inline-block; margin-bottom: 15px;
+        }
+        .activity-desc { font-size: 1.1rem; line-height: 1.6; color: var(--dark-blue); font-weight: 500; }
+
+        .btn-glow {
+            background: var(--primary-pink); color: white; border: none;
+            padding: 15px 40px; border-radius: 50px; font-weight: bold;
+            cursor: pointer; box-shadow: 0 0 20px rgba(255, 77, 109, 0.4);
+            font-size: 1rem; transition: 0.3s;
+        }
+        .btn-glow:hover { transform: scale(1.05); }
+        .btn-birthday { background: var(--gold); margin-top: 20px; box-shadow: 0 0 20px rgba(218, 169, 57, 0.4); }
+
+        @media (max-width: 768px) {
+            .sidebar-decor { display: none; }
+            .event-row { padding: 40px 5%; }
+        }
+    </style>
+</head>
+<body>
+
+    <audio id="bg-music" loop>
+        <source src="../Assets/honcayeu.mp3" type="audio/mpeg">
+    </audio>
+
+    <div class="progress-bar" id="myBar"></div>
+
+    <!-- Màn hình khóa -->
+    <div id="quiz-screen">
+        <div class="quiz-box">
+            <h2 style="font-family: 'Pacifico'; color: var(--primary-pink);">Một câu hỏi nhỏ</h2>
+            <p>28/2 đến 7/6 là yêu nhau được bao nhiêu ngày? ❤️</p>
+            <input type="text" id="answer" placeholder="Nhập số ngày..." style="width: 80%; padding: 12px; margin: 20px 0; border: 1px solid #ddd; border-radius: 10px; text-align: center; outline: none;">
+            <br>
+            <button class="btn-glow" onclick="unlock()">Khám phá ✨</button>
+        </div>
+    </div>
+
+    <div id="main-content" style="opacity: 0; transition: opacity 1.5s ease-in;">
+        <header style="text-align: center; padding: 100px 20px;">
+            <h1 style="font-family: 'Pacifico'; font-size: 3rem; color: var(--primary-pink);">Hành trình 100 ngày</h1>
+            <p style="letter-spacing: 2px; color: var(--dark-blue);">Đi cùng anh nhé :333</p>
+        </header>
+
+        <div class="event-row reveal">
+            <div class="polaroid" style="transform: rotate(-3deg);">
+                <img src="../Assets/IMG_5772.JPG" alt="Đón em">
+            </div>
+            <div class="event-info">
+                <div class="time-tag">13:00-15:30</div>
+                <p class="activity-desc">Anh sẽ chạy về đó đón em và chở em đi xem phim nhé!</p>
+            </div>
+        </div>
+
+        <div class="event-row reveal">
+            <div class="polaroid" style="transform: rotate(3deg);">
+                <img src="../Assets/IMG_6616.JPG" alt="Workshop">
+            </div>
+            <div class="event-info">
+                <div class="time-tag">16:00-17:30</div>
+                <p class="activity-desc">Tụi mình sẽ cùng đi workshop làm gấu bông để tặng nhau.</p>
+            </div>
+        </div>
+
+        <div class="event-row reveal">
+            <div class="polaroid" style="transform: rotate(-2deg);">
+                <img src="../Assets/IMG_6807.JPG" alt="Dinner">
+            </div>
+            <div class="event-info">
+                <div class="time-tag">18:00-20:00</div>
+                <p class="activity-desc">Ngồi ăn tối ở Húe By Xéo, nói chuyện và cùng nhau trao đổi để mình hiểu nhau hơn nữa.</p>
+            </div>
+        </div>
+        <div style="text-align: center; padding: 50px 0;" class="reveal">
+            <button class="btn-glow btn-birthday" onclick="window.open('birthday.html', '_blank')">
+                Điều bất ngờ cuối cùng ✨
+            </button>
+        </div>
+
+        <footer style="text-align: center; padding: 50px 0 100px 0;">
+            <h2 style="font-family: 'Pacifico'; color: var(--primary-pink);">Yêu em nhất trên đời! ❤️</h2>
+        </footer>
+    </div>
+
+    <script>
+        function unlock() {
+            const pass = document.getElementById('answer').value;
+            const music = document.getElementById('bg-music');
+            
+            if(pass === "100") {
+                document.getElementById('quiz-screen').style.transform = 'translateY(-100%)';
+                document.getElementById('main-content').style.opacity = '1';
+                if (music) {
+                    music.volume = 0.2; // Âm lượng 20%
+                    music.play().catch(e => console.log(e));
+                }
+                initEffects();
+            } else {
+                alert("Mật khẩu là số ngày mình yêu nhau đó công chúa!");
+            }
+        }
+
+        function initEffects() {
+            window.onscroll = function() {
+                let winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+                let height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+                let scrolled = (winScroll / height) * 100;
+                document.getElementById("myBar").style.width = scrolled + "%";
+            };
+            ScrollReveal().reveal('.reveal', { delay: 200, distance: '80px', origin: 'bottom', duration: 1200, interval: 300 });
+        }
+        document.getElementById('answer').addEventListener('keypress', (e) => { if (e.key === 'Enter') unlock(); });
+    </script>
+</body>
+</html>
